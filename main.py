@@ -2,6 +2,11 @@
 import functions
 import tkinter as tk
 
+def chooseTheInspector():
+    root.configure(bg=functions.randomcolor())
+    #name = functions.getRandomInspectorWithinReason()
+    return "amanda"
+
 
 #this is initialises the window
 root = tk.Tk()
@@ -11,8 +16,8 @@ root.title("QC Inspector Selector 3000")
 #this will have to implemented after it gets put on the O drive
 #root.iconbitmap("")
 
-#set the background to navy blue
-root.configure(bg="#020257")
+#set the background to a random color using the random color function
+root.configure(bg=functions.randomcolor())
 
 #tell it to open in full screen
 root.attributes("-fullscreen", True)
@@ -22,11 +27,13 @@ root.geometry("1000x550")
 
 
 # Create a label widget and set its text and background color... and font
-label = tk.Label(text="hello, click next", bg="white", font=("Arial", 64))
+label = tk.Label(text="hello, click next", font=("Arial", 200))
 
 # Create a button widget and set its text.
-next_button = tk.Button(text="Next", command=functions.chooseTheSelector(),
-                         font=("Arial", 25))
+#not sure why it has to be a lambda expression but it does 
+
+next_button = tk.Button(text="Next", command=lambda : label.configure(text= str(chooseTheInspector())),
+                                        font=("Arial", 25))
 
 # Create a button widget and set its text.
 skip_button = tk.Button(text="Skip", command=lambda: print("testing"), font=("Arial", 25))
