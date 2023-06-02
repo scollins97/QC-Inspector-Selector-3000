@@ -4,8 +4,14 @@ import tkinter as tk
 
 def chooseTheInspector():
     root.configure(bg=functions.randomcolor())
-    name = functions.getRandomInspectorWithinReason()
-    return name
+    # Pack the skip button to the left of the label widget.
+    #this means the skip button will not show until after the next button is clicked
+    skip_button.pack(side="left", padx= 20)
+    return functions.getRandomInspectorWithinReason()
+    
+def skipThenChooseTheInspector():
+    root.configure(bg=functions.randomcolor())
+    return functions.skipTheLastInspectorFirst()
 
 
 #this is initialises the window
@@ -37,7 +43,9 @@ next_button = tk.Button(text="Next",
                         font=("Arial, 200")), font=("Arial", 25))
 
 # Create a button widget and set its text.
-skip_button = tk.Button(text="Skip", command=lambda: print("testing"), font=("Arial", 25))
+skip_button = tk.Button(text="Skip",
+                        command=lambda : label.configure(text= str(skipThenChooseTheInspector()),
+                        font=("Arial, 200")), font=("Arial", 25))
 
 # Create a button widget and set its text.
 quit_button = tk.Button(text="Quit", command=root.quit, font=("Arial", 25))
@@ -49,13 +57,8 @@ label.place(relx=0.5, rely=0.35, anchor="center")
 # Pack the next button to the right of the label widget.
 next_button.pack(side="right", padx= 20)
 
-# Pack the skip button to the left of the label widget.
-skip_button.pack(side="left", padx= 20)
-
 # Pack the quit button at the bottom of the screen.
 quit_button.pack(side="bottom", pady= 20)
-
-
 
 
 #start the main loop

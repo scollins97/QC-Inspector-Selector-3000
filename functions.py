@@ -27,8 +27,17 @@ def getRandomInspectorWithinReason() :
         #if the inspectors score is no higher than five above the average score .. do this
         if inspector.score <= (averageScore() + 5) :
             notAValidNameYet = False
-            sqlFunctions.incrementScoreByName(str(inspector.name))
+            sqlFunctions.incrementScoreByName(inspector.name)
+            sqlFunctions.uploadMostRecentInspector(inspector.name)
+            print(f"The most recently selected person is {sqlFunctions.downloadMostRecentInspector()}")
             return inspector.name
+        
+#this function adds an extra step to skip the last inspector(removing their point) before calling 
+#the getRandomInspectorWithinReason() 
+def skipTheLastInspectorFirst():
+    sqlFunctions.decrementScoreByName(sqlFunctions.downloadMostRecentInspector())
+    return getRandomInspectorWithinReason()
+
     
 def randomcolor() :
     #first lets get random RGB values
@@ -49,4 +58,3 @@ def averageScore() :
     for row in everyone:
         print(row)
     return score
-
