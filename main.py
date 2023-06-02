@@ -3,33 +3,33 @@ import functions
 import tkinter as tk
 
 def chooseTheInspector():
-    root.configure(bg=functions.randomcolor())
+    window.configure(bg=functions.randomcolor())
     # Pack the skip button to the left of the label widget.
     #this means the skip button will not show until after the next button is clicked
     skip_button.pack(side="left", padx= 20)
     return functions.getRandomInspectorWithinReason()
     
 def skipThenChooseTheInspector():
-    root.configure(bg=functions.randomcolor())
+    window.configure(bg=functions.randomcolor())
     return functions.skipTheLastInspectorFirst()
 
 
 #this is initialises the window
-root = tk.Tk()
-root.title("QC Inspector Selector 3000")
+window = tk.Tk()
+window.title("QC Inspector Selector 3000")
 
 #set the icon 
 #this will have to implemented after it gets put on the O drive
-#root.iconbitmap("")
+#window.iconbitmap("")
 
 #set the background to a random color using the random color function
-root.configure(bg=functions.randomcolor())
+window.configure(bg=functions.randomcolor())
 
 #tell it to open in full screen
-root.attributes("-fullscreen", True)
+window.attributes("-fullscreen", True)
 
 #set the size it will be when not fullscreen? might just delete this
-root.geometry("1000x550")
+window.geometry("1000x550")
 
 
 # Create a label widget and set its text and background color... and font
@@ -48,7 +48,7 @@ skip_button = tk.Button(text="Skip",
                         font=("Arial, 200")), font=("Arial", 25))
 
 # Create a button widget and set its text.
-quit_button = tk.Button(text="Quit", command=root.quit, font=("Arial", 25))
+quit_button = tk.Button(text="Quit", command=window.quit, font=("Arial", 25))
 
 
 # Center the label horizontally
@@ -62,4 +62,4 @@ quit_button.pack(side="bottom", pady= 20)
 
 
 #start the main loop
-root.mainloop()
+window.mainloop()
