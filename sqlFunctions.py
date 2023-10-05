@@ -3,6 +3,7 @@ import sqlite3
 import os
 
 #these next few steps are so that if this is moved it can still find the database
+#this will be changed upon dist
 # Get the path to the current file
 current_dir = os.path.dirname(os.path.abspath(__file__))
 # Specify the database file name
